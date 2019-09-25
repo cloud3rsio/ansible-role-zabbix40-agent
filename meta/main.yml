@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: zabbix40_agebnt
+  role_name: zabbix40_agent
   author: youyo
   company: heptagon inc.
   description: install zabbix-agent

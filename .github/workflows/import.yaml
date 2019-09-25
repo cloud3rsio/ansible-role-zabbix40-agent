@@ -1,0 +1,15 @@
+name: Import role
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: youyo/import-role-to-ansible-galaxy@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_FOR_ANSBILE_GALAXY }}

@@ -1,0 +1,21 @@
+galaxy_info:
+  role_name: zabbix40_agebnt
+  author: youyo
+  company: heptagon inc.
+  description: install zabbix-agent
+  license: MIT
+  min_ansible_version: 2.8
+  platforms:
+    - name: Amazon
+      versions:
+        - Candidate
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags:
+    - system
+    - zabbix
+
+dependencies:
+  - cloud3rsio.yumrepo_zabbix40

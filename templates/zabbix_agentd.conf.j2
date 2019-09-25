@@ -1,0 +1,53 @@
+############ GENERAL PARAMETERS #################
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogType=file
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=50
+DebugLevel=3
+# SourceIP=
+EnableRemoteCommands=0
+# LogRemoteCommands=0
+
+##### Passive checks related
+Server={{ zabbix40_agent_Server }}
+ListenPort={{ zabbix40_agent_ListenPort }}
+# ListenIP=0.0.0.0
+StartAgents=3
+
+##### Active checks related
+ServerActive={{ zabbix40_agent_ServerActive }}
+# Hostname=
+HostnameItem=system.hostname
+HostMetadata={{ zabbix40_agent_HostMetadata }}
+# HostMetadataItem=
+RefreshActiveChecks=60
+BufferSend=5
+BufferSize=100
+MaxLinesPerSecond=20
+
+############ ADVANCED PARAMETERS #################
+Timeout=30
+AllowRoot={{ zabbix40_agent_AllowRoot }}
+User=zabbix
+Include=/etc/zabbix/zabbix_agentd.d/*.conf
+# UnsafeUserParameters=0
+
+####### LOADABLE MODULES #######
+# LoadModulePath=${libdir}/modules
+# LoadModule=
+
+####### TLS-RELATED PARAMETERS #######
+TLSConnect=unencrypted
+TLSAccept=unencrypted
+# TLSCAFile=
+# TLSCRLFile=
+# TLSServerCertIssuer=
+# TLSServerCertSubject=
+# TLSCertFile=
+# TLSKeyFile=
+# TLSPSKIdentity=
+# TLSPSKFile=
+
+{% for user_parameter in zabbix40_agent_UserParameters %}
+UserParameter={{ user_parameter }}
+{% endfor %}

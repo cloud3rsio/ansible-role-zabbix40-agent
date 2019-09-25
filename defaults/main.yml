@@ -1,0 +1,15 @@
+---
+zabbix40_agent_packages:
+  - zabbix-agent
+  - zabbix-sender
+  - zabbix-get
+zabbix40_agent_Server: 127.0.0.1/32
+zabbix40_agent_ListenPort: 10050
+zabbix40_agent_ServerActive: ''
+zabbix40_agent_HostMetadata: ''
+zabbix40_agent_AllowRoot: 0
+zabbix40_agent_UserParameters: []
+zabbix40_agent_mysql:
+  user: root
+  password: password
+  host: localhost

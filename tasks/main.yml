@@ -1,0 +1,35 @@
+---
+- name: Install zabbix40-agent
+  yum:
+    name: "{{ zabbix40_agent_packages | join(',') }}"
+    state: present
+
+- name: Create zabbix home directory
+  file:
+    path: /var/lib/zabbix
+    state: directory
+    owner: zabbix
+    group: zabbix
+    mode: 0750
+
+- name: Create mysql credentials
+  template:
+    src: my.cnf.j2
+    dest: /var/lib/zabbix/.my.cnf
+    owner: zabbix
+    group: zabbix
+    mode: 0640
+  notify: restart_zabbix_agent_systemd
+
+- name: Configurations
+  template:
+    src: zabbix_agentd.conf.j2
+    dest: /etc/zabbix/zabbix_agentd.conf
+    mode: 0644
+  notify: restart_zabbix_agent_systemd
+
+- name: Start service
+  systemd:
+    name: zabbix-agent.service
+    state: started
+    enabled: yes

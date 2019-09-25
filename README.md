@@ -43,7 +43,7 @@ Example Playbook
 ```yaml
 - hosts: all
   roles:
-	- role: cloud3rsio.zabbix40_agent
+    - role: cloud3rsio.zabbix40_agent
       zabbix40_agent_UserParameters:
         - >-
           redis.status[*],redis-cli info |
